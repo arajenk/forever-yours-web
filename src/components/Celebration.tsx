@@ -73,7 +73,7 @@ const Celebration = () => {
           transition={{ delay: 0.7 }}
           className="text-2xl md:text-3xl text-muted-foreground font-body"
         >
-          I knew you'd say yes, Sarah!
+          I knew you'd say yes!
         </motion.p>
 
         <motion.div
@@ -93,7 +93,7 @@ const Celebration = () => {
           transition={{ delay: 1.5 }}
           className="mt-12 text-lg text-muted-foreground"
         >
-          I love you, Sarah! ❤️
+          Happy Valentines to my sweet baby girl!!! ❤️
         </motion.p>
       </motion.div>
     </motion.div>
