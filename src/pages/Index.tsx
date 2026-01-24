@@ -58,7 +58,7 @@ const Index = () => {
           transition={{ delay: 0.3, duration: 0.6 }}
           className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-foreground mb-4"
         >
-          Will you be my
+          Sarah, will you be my
         </motion.h1>
 
         <motion.h2
