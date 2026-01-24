@@ -58,7 +58,7 @@ const Index = () => {
           transition={{ delay: 0.3, duration: 0.6 }}
           className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-gradient-romantic mb-6"
         >
-          Will you be my valentine baby?
+          Will you be my valentines?
         </motion.h1>
 
         {/* Cute cat gif */}
