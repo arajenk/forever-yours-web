@@ -56,19 +56,10 @@ const Index = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.3, duration: 0.6 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-foreground mb-4"
+          className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-gradient-romantic mb-6"
         >
-          Sarah, will you be my
+          Will you be my valentine baby?
         </motion.h1>
-
-        <motion.h2
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-gradient-romantic mb-6"
-        >
-          Valentine?
-        </motion.h2>
 
         {/* Cute cat gif */}
         <motion.img
@@ -94,7 +85,7 @@ const Index = () => {
             onClick={handleYes}
             className="px-12 py-4 text-xl font-semibold rounded-full bg-primary text-primary-foreground shadow-lg hover:shadow-xl transition-shadow cursor-pointer flex items-center gap-2"
           >
-            Yes! <img src="https://media.giphy.com/media/ICOgUNjpvO0PC/giphy.gif" alt="heart cat" className="w-8 h-8 rounded-full object-cover" />
+            Yes! <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="love cat" className="w-8 h-8 rounded-full object-cover" />
           </motion.button>
 
           {/* Escaping No button */}
