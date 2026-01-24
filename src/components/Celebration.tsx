@@ -64,8 +64,17 @@ const Celebration = () => {
           transition={{ delay: 0.5 }}
           className="text-5xl md:text-7xl font-display font-bold text-foreground mb-4"
         >
-          Yay! 💕
+          Yay!
         </motion.h1>
+
+        <motion.img
+          src="https://media.giphy.com/media/BzyTuYCmvSORqs1ABM/giphy.gif"
+          alt="Happy excited cat"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.6, duration: 0.5 }}
+          className="w-40 h-40 md:w-52 md:h-52 mx-auto mb-4 rounded-2xl object-cover shadow-lg"
+        />
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -83,7 +92,7 @@ const Celebration = () => {
           className="mt-8 flex justify-center gap-4"
         >
           <Sparkles className="text-gold animate-pulse" size={32} />
-          <Heart className="text-primary animate-pulse" size={32} fill="currentColor" />
+          <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="love cat" className="w-12 h-12 rounded-full object-cover" />
           <Sparkles className="text-gold animate-pulse" size={32} />
         </motion.div>
 
@@ -91,9 +100,10 @@ const Celebration = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
-          className="mt-12 text-lg text-muted-foreground"
+          className="mt-12 text-lg text-muted-foreground flex items-center justify-center gap-2"
         >
-          Happy Valentines to my sweet baby girl!!! ❤️
+          Happy Valentines to my sweet baby girl!!! 
+          <img src="https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif" alt="cat heart" className="w-10 h-10 rounded-full object-cover" />
         </motion.p>
       </motion.div>
     </motion.div>
