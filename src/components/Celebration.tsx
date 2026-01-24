@@ -82,7 +82,7 @@ const Celebration = () => {
           transition={{ delay: 0.7 }}
           className="text-2xl md:text-3xl text-muted-foreground font-body"
         >
-          I knew you'd say yes!
+          I knew you'd say yes! Hehehe c:
         </motion.p>
 
         <motion.div
@@ -103,7 +103,7 @@ const Celebration = () => {
           className="mt-12 text-lg text-muted-foreground flex items-center justify-center gap-2"
         >
           Happy Valentines to my sweet baby girl!!! 
-          <img src="https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif" alt="cat heart" className="w-10 h-10 rounded-full object-cover" />
+          <img src="https://media.giphy.com/media/uw0KpagtwEJtC/giphy.gif" alt="cute cat love" className="w-10 h-10 rounded-full object-cover" />
         </motion.p>
       </motion.div>
     </motion.div>
