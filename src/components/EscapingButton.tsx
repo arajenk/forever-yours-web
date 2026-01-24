@@ -68,10 +68,8 @@ const EscapingButton = ({ onGiveUp }: EscapingButtonProps) => {
             damping: 20,
           }}
           whileHover={{ scale: 1.1 }}
-          onMouseEnter={escape}
           onClick={escape}
-          onTouchStart={escape}
-          className="px-10 py-4 text-xl font-semibold rounded-full bg-muted text-muted-foreground border-2 border-border hover:border-primary/50 transition-colors cursor-pointer select-none touch-none"
+          className="px-10 py-4 text-xl font-semibold rounded-full bg-muted text-muted-foreground border-2 border-border hover:border-primary/50 transition-colors cursor-pointer select-none"
         >
           {message}
         </motion.button>
