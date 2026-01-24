@@ -65,10 +65,20 @@ const Index = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5, duration: 0.6 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-gradient-romantic mb-12"
+          className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-gradient-romantic mb-6"
         >
-          Valentine? 💕
+          Valentine?
         </motion.h2>
+
+        {/* Cute cat gif */}
+        <motion.img
+          src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif"
+          alt="Cute pleading cat"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.7, duration: 0.5 }}
+          className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-8 rounded-2xl object-cover shadow-lg"
+        />
 
         {/* Buttons container */}
         <motion.div
@@ -82,9 +92,9 @@ const Index = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleYes}
-            className="px-12 py-4 text-xl font-semibold rounded-full bg-primary text-primary-foreground shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+            className="px-12 py-4 text-xl font-semibold rounded-full bg-primary text-primary-foreground shadow-lg hover:shadow-xl transition-shadow cursor-pointer flex items-center gap-2"
           >
-            Yes! 💖
+            Yes! <img src="https://media.giphy.com/media/ICOgUNjpvO0PC/giphy.gif" alt="heart cat" className="w-8 h-8 rounded-full object-cover" />
           </motion.button>
 
           {/* Escaping No button */}
