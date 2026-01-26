@@ -1,15 +1,23 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Heart } from "lucide-react";
 import FloatingHearts from "@/components/FloatingHearts";
 import EscapingButton from "@/components/EscapingButton";
 import Celebration from "@/components/Celebration";
+import theLookOfLove from "@/assets/the_look_of_love.mp3";
 
 const Index = () => {
   const [accepted, setAccepted] = useState(false);
   const [noButtonGaveUp, setNoButtonGaveUp] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const handleYes = () => {
+    // Play the romantic music
+    if (!audioRef.current) {
+      audioRef.current = new Audio(theLookOfLove);
+      audioRef.current.loop = true;
+    }
+    audioRef.current.play();
     setAccepted(true);
   };
 
