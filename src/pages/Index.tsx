@@ -4,7 +4,7 @@ import { Heart } from "lucide-react";
 import FloatingHearts from "@/components/FloatingHearts";
 import EscapingButton from "@/components/EscapingButton";
 import Celebration from "@/components/Celebration";
-import theLookOfLove from "@/assets/the_look_of_love.mp3";
+import celebrationSong from "@/assets/celebration_song.mp3";
 const Index = () => {
   const [accepted, setAccepted] = useState(false);
   const [noButtonGaveUp, setNoButtonGaveUp] = useState(false);
@@ -12,7 +12,7 @@ const Index = () => {
   const handleYes = () => {
     // Play the romantic music
     if (!audioRef.current) {
-      audioRef.current = new Audio(theLookOfLove);
+      audioRef.current = new Audio(celebrationSong);
       audioRef.current.loop = true;
     }
     audioRef.current.play();
