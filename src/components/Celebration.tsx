@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Heart, Sparkles } from "lucide-react";
+import kittensCuddling from "@/assets/kittens-cuddling.webp";
 
 const Celebration = () => {
   const hearts = Array.from({ length: 50 }, (_, i) => ({
@@ -68,7 +69,7 @@ const Celebration = () => {
         </motion.h1>
 
         <motion.img
-          src="https://media.giphy.com/media/lL3PzLbPdDJTi/giphy.gif"
+          src={kittensCuddling}
           alt="Kittens cuddling"
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
