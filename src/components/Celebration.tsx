@@ -68,8 +68,8 @@ const Celebration = () => {
         </motion.h1>
 
         <motion.img
-          src="https://media.giphy.com/media/BzyTuYCmvSORqs1ABM/giphy.gif"
-          alt="Happy excited cat"
+          src="https://media.giphy.com/media/lL3PzLbPdDJTi/giphy.gif"
+          alt="Kittens cuddling"
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.6, duration: 0.5 }}
