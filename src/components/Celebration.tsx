@@ -5,6 +5,27 @@ import kittensCuddling from "@/assets/kittens-cuddling.webp";
 import gamingTogether1 from "@/assets/gaming-together-1.png";
 import gamingTogether2 from "@/assets/gaming-together-2.png";
 
+// Simple pop sound using Web Audio API
+const playPopSound = () => {
+  const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+  
+  // Create oscillator for the "pop" tone
+  const oscillator = audioContext.createOscillator();
+  const gainNode = audioContext.createGain();
+  
+  oscillator.connect(gainNode);
+  gainNode.connect(audioContext.destination);
+  
+  oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+  oscillator.frequency.exponentialRampToValueAtTime(200, audioContext.currentTime + 0.1);
+  
+  gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+  gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.15);
+  
+  oscillator.start(audioContext.currentTime);
+  oscillator.stop(audioContext.currentTime + 0.15);
+};
+
 const GiftBox = ({ 
   image, 
   alt, 
@@ -28,6 +49,11 @@ const GiftBox = ({
     return () => clearTimeout(timer);
   }, [delay]);
 
+  const handleOpen = () => {
+    playPopSound();
+    setIsOpened(true);
+  };
+
   if (!showBox) return null;
 
   return (
@@ -41,40 +67,30 @@ const GiftBox = ({
         {!isOpened ? (
           <motion.div
             key="gift"
-            className="relative cursor-pointer"
-            onClick={() => setIsOpened(true)}
-            whileHover={{ scale: 1.1 }}
-            animate={{ 
-              y: [0, -8, 0],
-              rotate: [-2, 2, -2]
-            }}
-            transition={{ 
-              y: { duration: 1, repeat: Infinity },
-              rotate: { duration: 0.5, repeat: Infinity }
-            }}
-            exit={{ 
-              scale: 1.3,
-              opacity: 0,
-              transition: { duration: 0.3 }
-            }}
+            className="relative cursor-pointer group"
+            onClick={handleOpen}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            animate={{ y: [0, -5, 0] }}
+            transition={{ y: { duration: 1.5, repeat: Infinity, ease: "easeInOut" } }}
+            exit={{ scale: 1.2, opacity: 0, transition: { duration: 0.2 } }}
           >
-            <div className="bg-primary rounded-lg p-6 md:p-8 shadow-xl relative">
-              <Gift size={48} className="text-primary-foreground md:w-16 md:h-16" />
-              <motion.div 
-                className="absolute -top-2 left-1/2 -translate-x-1/2 w-16 md:w-20 h-4 md:h-5 bg-gold rounded-full"
-                animate={{ scaleY: [1, 1.2, 1] }}
-                transition={{ duration: 0.5, repeat: Infinity }}
-              />
-              <div className="absolute -top-6 left-1/2 -translate-x-1/2">
-                <motion.div
-                  animate={{ rotate: [0, 10, -10, 0] }}
-                  transition={{ duration: 0.8, repeat: Infinity }}
-                >
-                  <Sparkles className="text-gold" size={24} />
-                </motion.div>
+            <div className="relative">
+              {/* Gift box body */}
+              <div className="bg-gradient-to-br from-primary to-primary/80 rounded-xl p-5 md:p-6 shadow-lg border-2 border-primary/20">
+                <Gift size={40} className="text-primary-foreground md:w-12 md:h-12" />
               </div>
+              {/* Ribbon bow */}
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 flex items-center gap-0.5">
+                <div className="w-4 h-4 md:w-5 md:h-5 bg-gold rounded-full shadow-sm" />
+                <div className="w-3 h-3 md:w-4 md:h-4 bg-gold/80 rounded-full shadow-sm -ml-2" />
+              </div>
+              {/* Vertical ribbon */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3 h-full bg-gold/60 rounded-sm" />
             </div>
-            <p className="text-xs text-center mt-2 text-muted-foreground font-body">tap me!</p>
+            <p className="text-xs text-center mt-2 text-muted-foreground/80 font-body group-hover:text-muted-foreground transition-colors">
+              tap to open ✨
+            </p>
           </motion.div>
         ) : (
           <motion.div
