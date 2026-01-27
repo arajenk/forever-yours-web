@@ -25,13 +25,13 @@ const Celebration = () => {
         transition={{ delay: 1.2, duration: 0.6 }}
         className="absolute top-8 left-8 md:top-12 md:left-12 z-20"
       >
-        <div className="bg-white p-2 rounded shadow-xl">
+        <div className="bg-white p-2 md:p-3 rounded shadow-xl">
           <img
             src={gamingTogether1}
             alt="Us playing together"
-            className="w-28 h-20 md:w-40 md:h-28 object-cover rounded-sm"
+            className="w-40 h-28 md:w-56 md:h-40 object-cover rounded-sm"
           />
-          <p className="text-xs text-center mt-1 font-body text-muted-foreground">us 💕</p>
+          <p className="text-xs md:text-sm text-center mt-1 font-body text-muted-foreground">us 💕</p>
         </div>
       </motion.div>
 
@@ -42,13 +42,13 @@ const Celebration = () => {
         transition={{ delay: 1.4, duration: 0.6 }}
         className="absolute bottom-8 right-8 md:bottom-12 md:right-12 z-20"
       >
-        <div className="bg-white p-2 rounded shadow-xl">
+        <div className="bg-white p-2 md:p-3 rounded shadow-xl">
           <img
             src={gamingTogether2}
             alt="Us playing Minecraft together"
-            className="w-28 h-20 md:w-40 md:h-28 object-cover rounded-sm"
+            className="w-40 h-28 md:w-56 md:h-40 object-cover rounded-sm"
           />
-          <p className="text-xs text-center mt-1 font-body text-muted-foreground">gaming together 🎮</p>
+          <p className="text-xs md:text-sm text-center mt-1 font-body text-muted-foreground">gaming together 🎮</p>
         </div>
       </motion.div>
 
