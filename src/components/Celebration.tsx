@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Heart, Sparkles } from "lucide-react";
 import kittensCuddling from "@/assets/kittens-cuddling.webp";
+import gamingTogether1 from "@/assets/gaming-together-1.png";
+import gamingTogether2 from "@/assets/gaming-together-2.png";
 
 const Celebration = () => {
   const hearts = Array.from({ length: 50 }, (_, i) => ({
@@ -16,6 +18,40 @@ const Celebration = () => {
       animate={{ opacity: 1 }}
       className="fixed inset-0 flex items-center justify-center z-50 bg-gradient-romantic"
     >
+      {/* Top-left gaming screenshot */}
+      <motion.div
+        initial={{ opacity: 0, x: -50, rotate: -15 }}
+        animate={{ opacity: 1, x: 0, rotate: -8 }}
+        transition={{ delay: 1.2, duration: 0.6 }}
+        className="absolute top-8 left-8 md:top-12 md:left-12 z-20"
+      >
+        <div className="bg-white p-2 rounded shadow-xl">
+          <img
+            src={gamingTogether1}
+            alt="Us playing together"
+            className="w-28 h-20 md:w-40 md:h-28 object-cover rounded-sm"
+          />
+          <p className="text-xs text-center mt-1 font-body text-muted-foreground">us 💕</p>
+        </div>
+      </motion.div>
+
+      {/* Bottom-right gaming screenshot */}
+      <motion.div
+        initial={{ opacity: 0, x: 50, rotate: 15 }}
+        animate={{ opacity: 1, x: 0, rotate: 6 }}
+        transition={{ delay: 1.4, duration: 0.6 }}
+        className="absolute bottom-8 right-8 md:bottom-12 md:right-12 z-20"
+      >
+        <div className="bg-white p-2 rounded shadow-xl">
+          <img
+            src={gamingTogether2}
+            alt="Us playing Minecraft together"
+            className="w-28 h-20 md:w-40 md:h-28 object-cover rounded-sm"
+          />
+          <p className="text-xs text-center mt-1 font-body text-muted-foreground">gaming together 🎮</p>
+        </div>
+      </motion.div>
+
       {/* Confetti hearts */}
       {hearts.map((heart) => (
         <motion.div
