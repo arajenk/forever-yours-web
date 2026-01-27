@@ -21,17 +21,20 @@ const GiftBox = ({
   rotation: number;
 }) => {
   const [isOpened, setIsOpened] = useState(false);
+  const [showBox, setShowBox] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsOpened(true), delay * 1000);
+    const timer = setTimeout(() => setShowBox(true), delay * 1000);
     return () => clearTimeout(timer);
   }, [delay]);
+
+  if (!showBox) return null;
 
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}
-      transition={{ delay: delay - 0.5, duration: 0.5, type: "spring" }}
+      transition={{ duration: 0.5, type: "spring" }}
       className={`absolute ${position} z-20`}
     >
       <AnimatePresence mode="wait">
