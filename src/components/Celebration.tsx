@@ -125,10 +125,16 @@ const GiftBox = ({
             key="gift"
             className="relative cursor-pointer group"
             onClick={handleOpen}
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            animate={{ y: [0, -5, 0] }}
-            transition={{ y: { duration: 1.5, repeat: Infinity, ease: "easeInOut" } }}
+            animate={{ 
+              y: [0, -4, 0],
+              rotate: [0, -3, 3, -3, 3, 0]
+            }}
+            transition={{ 
+              y: { duration: 1.2, repeat: Infinity, ease: "easeInOut" },
+              rotate: { duration: 0.5, repeat: Infinity, repeatDelay: 1.5, ease: "easeInOut" }
+            }}
             exit={{ scale: 1.2, opacity: 0, transition: { duration: 0.2 } }}
           >
             <div className="relative">
