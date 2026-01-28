@@ -5,25 +5,80 @@ import kittensCuddling from "@/assets/kittens-cuddling.webp";
 import gamingTogether1 from "@/assets/gaming-together-1.png";
 import gamingTogether2 from "@/assets/gaming-together-2.png";
 
-// Simple pop sound using Web Audio API
-const playPopSound = () => {
+// Celebration sound using Web Audio API
+const playCelebrationSound = () => {
   const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
   
-  // Create oscillator for the "pop" tone
-  const oscillator = audioContext.createOscillator();
-  const gainNode = audioContext.createGain();
+  // Create multiple oscillators for a richer "tada" sound
+  const playTone = (freq: number, startTime: number, duration: number) => {
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+    
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    
+    oscillator.frequency.setValueAtTime(freq, audioContext.currentTime + startTime);
+    oscillator.type = "sine";
+    
+    gainNode.gain.setValueAtTime(0, audioContext.currentTime + startTime);
+    gainNode.gain.linearRampToValueAtTime(0.15, audioContext.currentTime + startTime + 0.02);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + startTime + duration);
+    
+    oscillator.start(audioContext.currentTime + startTime);
+    oscillator.stop(audioContext.currentTime + startTime + duration);
+  };
   
-  oscillator.connect(gainNode);
-  gainNode.connect(audioContext.destination);
+  // Play ascending notes for a celebration effect
+  playTone(523, 0, 0.15);      // C5
+  playTone(659, 0.08, 0.15);   // E5
+  playTone(784, 0.16, 0.2);    // G5
+};
+
+const PhotoModal = ({ 
+  image, 
+  alt, 
+  caption, 
+  isOpen, 
+  onClose 
+}: { 
+  image: string; 
+  alt: string; 
+  caption: string; 
+  isOpen: boolean; 
+  onClose: () => void;
+}) => {
+  if (!isOpen) return null;
   
-  oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
-  oscillator.frequency.exponentialRampToValueAtTime(200, audioContext.currentTime + 0.1);
-  
-  gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-  gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.15);
-  
-  oscillator.start(audioContext.currentTime);
-  oscillator.stop(audioContext.currentTime + 0.15);
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <motion.div
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.8, opacity: 0 }}
+        transition={{ type: "spring", stiffness: 300, damping: 25 }}
+        className="bg-white p-3 md:p-4 rounded-lg shadow-2xl max-w-[90vw] max-h-[90vh]"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <img 
+          src={image} 
+          alt={alt} 
+          className="max-w-full max-h-[70vh] object-contain rounded" 
+        />
+        <p className="text-sm md:text-base text-center mt-2 font-body text-muted-foreground">
+          {caption}
+        </p>
+        <p className="text-xs text-center mt-1 text-muted-foreground/60">
+          tap anywhere to close
+        </p>
+      </motion.div>
+    </motion.div>
+  );
 };
 
 const GiftBox = ({ 
@@ -43,6 +98,7 @@ const GiftBox = ({
 }) => {
   const [isOpened, setIsOpened] = useState(false);
   const [showBox, setShowBox] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setShowBox(true), delay * 1000);
@@ -50,7 +106,7 @@ const GiftBox = ({
   }, [delay]);
 
   const handleOpen = () => {
-    playPopSound();
+    playCelebrationSound();
     setIsOpened(true);
   };
 
@@ -80,13 +136,6 @@ const GiftBox = ({
               <div className="bg-gradient-to-br from-primary to-primary/80 rounded-xl p-5 md:p-6 shadow-lg border-2 border-primary/20">
                 <Gift size={40} className="text-primary-foreground md:w-12 md:h-12" />
               </div>
-              {/* Ribbon bow */}
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 flex items-center gap-0.5">
-                <div className="w-4 h-4 md:w-5 md:h-5 bg-gold rounded-full shadow-sm" />
-                <div className="w-3 h-3 md:w-4 md:h-4 bg-gold/80 rounded-full shadow-sm -ml-2" />
-              </div>
-              {/* Vertical ribbon */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3 h-full bg-gold/60 rounded-sm" />
             </div>
             <p className="text-xs text-center mt-2 text-muted-foreground/80 font-body group-hover:text-muted-foreground transition-colors">
               tap to open ✨
@@ -107,15 +156,21 @@ const GiftBox = ({
             <motion.div
               initial={{ y: -20 }}
               animate={{ y: 0 }}
-              className="bg-white p-2 md:p-3 rounded shadow-xl"
+              className="bg-white p-2 md:p-3 rounded shadow-xl cursor-pointer group"
+              onClick={() => setIsModalOpen(true)}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
               <img 
                 src={image} 
                 alt={alt} 
-                className="w-40 h-28 md:w-56 md:h-40 object-cover rounded-sm" 
+                className="w-44 h-32 md:w-72 md:h-52 lg:w-80 lg:h-56 object-cover rounded-sm" 
               />
               <p className="text-xs md:text-sm text-center mt-1 font-body text-muted-foreground">
                 {caption}
+              </p>
+              <p className="text-[10px] text-center text-muted-foreground/50 group-hover:text-muted-foreground/70 transition-colors">
+                tap to enlarge
               </p>
             </motion.div>
             {/* Confetti burst on reveal */}
@@ -136,6 +191,16 @@ const GiftBox = ({
             ))}
           </motion.div>
         )}
+      </AnimatePresence>
+      
+      <AnimatePresence>
+        <PhotoModal 
+          image={image} 
+          alt={alt} 
+          caption={caption} 
+          isOpen={isModalOpen} 
+          onClose={() => setIsModalOpen(false)} 
+        />
       </AnimatePresence>
     </motion.div>
   );
