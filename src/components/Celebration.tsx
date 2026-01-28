@@ -164,7 +164,7 @@ const GiftBox = ({
               <img 
                 src={image} 
                 alt={alt} 
-                className="w-44 h-32 md:w-72 md:h-52 lg:w-80 lg:h-56 object-cover rounded-sm" 
+                className="w-32 h-24 md:w-72 md:h-52 lg:w-80 lg:h-56 object-cover rounded-sm" 
               />
               <p className="text-xs md:text-sm text-center mt-1 font-body text-muted-foreground">
                 {caption}
