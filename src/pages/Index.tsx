@@ -4,7 +4,7 @@ import { Heart } from "lucide-react";
 import FloatingHearts from "@/components/FloatingHearts";
 import EscapingButton from "@/components/EscapingButton";
 import Celebration from "@/components/Celebration";
-import celebrationSong from "@/assets/celebration_song.mp3";
+import celebrationSong from "@/assets/until_i_found_you.mp3";
 const Index = () => {
   const [accepted, setAccepted] = useState(false);
   const [noButtonGaveUp, setNoButtonGaveUp] = useState(false);
