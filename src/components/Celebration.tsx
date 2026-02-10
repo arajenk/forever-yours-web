@@ -242,7 +242,7 @@ const Celebration = () => {
       <GiftBox
         image={gamingTogether2}
         alt="Us playing Minecraft together"
-        caption="in our cute lil house c:"
+        caption="in our cute house together! c:"
         delay={2}
         position="bottom-8 right-8 md:bottom-12 md:right-12"
         rotation={6}
