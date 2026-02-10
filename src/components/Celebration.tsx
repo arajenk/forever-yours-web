@@ -232,7 +232,7 @@ const Celebration = () => {
       <GiftBox
         image={gamingTogether1}
         alt="Us playing together"
-        caption="us locked on val fr 💕"
+        caption="us locked on val! bouta hit rad 💕"
         delay={1.5}
         position="top-8 left-8 md:top-12 md:left-12"
         rotation={-8}
